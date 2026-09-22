@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Tiếng Anh - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #FF7675, #6C5CE7);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 20px 10px 60px 10px;
+            color: #2d3436;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* SVG Background Patterns Overlay */
+        .bg-patterns {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.25;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23FFFFFF"><path d="M20 10l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/><circle cx="80" cy="30" r="8"/><path d="M100 80c0 5-5 10-10 10s-10-5-10-10 5-10 10-10 10 5 10 10z"/><path d="M30 90l5-10 10 5-5 10z"/><path d="M70 100l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></g></svg>');
+            animation: floatPatterns 20s linear infinite;
+        }
+
+        @keyframes floatPatterns {
+            from { background-position: 0 0; }
+            to { background-position: 120px 240px; }
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Style */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .teacher-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #6C5CE7;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            margin-bottom: 10px;
+            border: 2px solid #6C5CE7;
+            transform: rotate(-1deg);
+        }
+
+        .main-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
+        }
+
+        /* Important Reminder Box */
+        .reminder-card {
+            background: #FFF9E6;
+            border: 3px solid #FFEAA7;
+            border-left: 8px solid #FDCB6E;
+            border-radius: 18px;
+            padding: 16px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .reminder-title {
+            color: #D63031;
+            font-weight: 900;
+            font-size: 17px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .reminder-text {
+            color: #2d3436;
+            font-size: 14.5px;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+
+        .reminder-highlight {
+            display: block;
+            margin-top: 8px;
+            color: #6C5CE7;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border: 3px solid #F0F0F0;
+            transition: transform 0.2s ease;
+            position: relative;
+        }
+
+        .q-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            border-bottom: 2px dashed #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .q-number {
+            background: #6C5CE7;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 4px 14px;
+            border-radius: 12px;
+            box-shadow: 0 3px 0 #4b38b3;
+        }
+
+        .q-type {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #b2bec3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .q-text {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .q-text u {
+            color: #e84393;
+            font-weight: 900;
+            text-decoration-color: #e84393;
+            text-decoration-thickness: 3px;
+            padding: 0 2px;
+        }
+
+        /* Option Grid / Buttons */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .opt-btn {
+            background: #F8F9FA;
+            border: 2px solid #E9ECEF;
+            border-bottom: 5px solid #DEE2E6;
+            border-radius: 18px;
+            padding: 13px 16px;
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #495057;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            outline: none;
+            user-select: none;
+        }
+
+        .opt-btn:hover:not([disabled]) {
+            transform: translateY(-2px) scale(1.01);
+            background: #EDF2F7;
+            border-color: #CBD5E0;
+        }
+
+        .opt-btn:active:not([disabled]) {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+        }
+
+        .opt-prefix {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #E2E8F0;
+            color: #4A5568;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Correct & Wrong States */
+        .opt-btn.correct {
+            background: #E6F9F0 !important;
+            border-color: #00D26A !important;
+            border-bottom: 5px solid #00A852 !important;
+            color: #007A3D !important;
+        }
+        .opt-btn.correct .opt-prefix {
+            background: #00D26A !important;
+            color: white !important;
+        }
+
+        .opt-btn.wrong {
+            background: #FFEAEA !important;
+            border-color: #FF4757 !important;
+            border-bottom: 5px solid #D63031 !important;
+            color: #C0392B !important;
+            animation: shake 0.4s ease;
+        }
+        .opt-btn.wrong .opt-prefix {
+            background: #FF4757 !important;
+            color: white !important;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        /* Explanation Box */
+        .explanation-box {
+            display: none;
+            margin-top: 18px;
+            background: #F3F0FF;
+            border: 2px dashed #9B51E0;
+            border-radius: 18px;
+            padding: 16px 18px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .explanation-box.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-head {
+            font-weight: 900;
+            color: #6C5CE7;
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exp-section {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.55;
+            color: #2d3436;
+        }
+
+        .exp-section strong {
+            color: #6C5CE7;
+        }
+
+        .exp-list {
+            margin-left: 12px;
+            list-style: none;
+        }
+
+        .exp-list li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .exp-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #8854C0;
+            font-weight: bold;
+        }
+
+        /* Submit Bar & Modal */
+        .submit-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .submit-btn {
+            background: #00D26A;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            padding: 16px 45px;
+            border: none;
+            border-bottom: 6px solid #00A852;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 210, 106, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            background: #00E676;
+        }
+
+        .submit-btn:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 28px;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 4px solid #6C5CE7;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-score {
+            font-size: 48px;
+            font-weight: 900;
+            color: #6C5CE7;
+            margin: 10px 0;
+        }
+
+        .modal-msg {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            background: #F8F9FA;
+            padding: 16px;
+            border-radius: 16px;
+            border-left: 5px solid #6C5CE7;
+        }
+
+        .close-modal-btn {
+            background: #6C5CE7;
+            color: white;
+            border: none;
+            border-bottom: 4px solid #4b38b3;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-patterns"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        <header>
+            <div class="teacher-badge">👩‍🏫 Giáo viên tạo: Ms Lê Hằng English</div>
+            <h1 class="main-title">🎯 BÀI KIỂM TRA TIẾNG ANH TƯƠNG TÁC</h1>
+        </header>
+
+        <div class="reminder-card">
+            <div class="reminder-title">
+                <span>⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</span>
+            </div>
+            <div class="reminder-text">
+                Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+                Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+                <span class="reminder-highlight">* Kéo tới đâu, làm tới đó! *</span>
+            </div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="submit-container">
+            <button class="submit-btn" onclick="submitQuiz()">NỘP BÀI THI 🚀</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal-card">
+            <div style="font-size: 50px;">🏆</div>
+            <h2 style="font-weight: 900; color:#2d3436;">KẾT QUẢ BÀI LÀM</h2>
+            <div class="modal-score" id="score-text">0 / 40</div>
+            <div class="modal-msg" id="comment-text">...</div>
+            <button class="close-modal-btn" onclick="closeModal()">ĐÓNG VÀ XEM LẠI BÀI 📝</button>
+        </div>
+    </div>
+
+    <script>
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) audioCtx = new AudioContext();
+        }
+
+        function playSound(type) {
+            try {
+                initAudio();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                if (type === 'correct') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+                } else if (type === 'wrong') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+                    osc.frequency.setValueAtTime(160, audioCtx.currentTime + 0.15);
+                    osc.frequency.setValueAtTime(110, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.45);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.45);
+                }
+            } catch (e) {
+                console.log("Audio waiting for user gesture", e);
+            }
+        }
+
+        const rawQuestions = [
+            // III.1
+            {
+                type: "SECTION III - PAST SIMPLE TENSE",
+                question: "1. I'm sorry you've missed the train, it ________ five minutes ago.",
+                options: [
+                    { text: "had left", correct: false },
+                    { text: "left", correct: true },
+                    { text: "has left", correct: false },
+                    { text: "has been left", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi rất tiếc vì bạn đã nhỡ chuyến tàu, nó đã rời đi 5 phút trước.",
+                    optionsDict: [
+                        "A. had left (Quá khứ hoàn thành)",
+                        "B. left (Quá khứ đơn - đi với mốc thời gian 'five minutes ago')",
+                        "C. has left (Hiện tại hoàn thành)",
+                        "D. has been left (Bị động hiện tại hoàn thành)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì câu có trạng ngữ chỉ thời gian xác định trong quá khứ 'five minutes ago' (5 phút trước), do đó động từ bắt buộc chia ở Thì Quá khứ đơn.",
+                    whyIncorrect: "A, C, D không đi kèm với mốc thời gian xác định 'ago'."
+                }
+            },
+            // III.2
+            {
+                type: "SECTION III - WORD FORMATION (NOUNS)",
+                question: "2. She showed her ________ by asking lots of trivial questions.",
+                options: [
+                    { text: "experience", correct: false },
+                    { text: "experienced", correct: false },
+                    { text: "inexperienced", correct: false },
+                    { text: "inexperience", correct: true }
+                ],
+                explanation: {
+                    translation: "Cô ấy đã bộc lộ sự thiếu kinh nghiệm của mình bằng cách hỏi rất nhiều câu hỏi vụn vặt.",
+                    optionsDict: [
+                        "A. experience (n: kinh nghiệm)",
+                        "B. experienced (adj: có kinh nghiệm)",
+                        "C. inexperienced (adj: thiếu kinh nghiệm)",
+                        "D. inexperience (n: sự thiếu kinh nghiệm)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì sau tính từ sở hữu 'her' cần một Danh từ, và hành động đặt câu hỏi vặt vãnh thể hiện 'sự thiếu kinh nghiệm' (inexperience).",
+                    whyIncorrect: "A ngược nghĩa; B và C là tính từ không đứng sau tính từ sở hữu 'her'."
+                }
+            },
+            // III.3
+            {
+                type: "SECTION III - PAST PERFECT TENSE",
+                question: "3. Before he turned 14, Mozart ________ a few lesser pieces for the piano.",
+                options: [
+                    { text: "has composed", correct: false },
+                    { text: "had composed", correct: true },
+                    { text: "was composed", correct: false },
+                    { text: "would composed", correct: false }
+                ],
+                explanation: {
+                    translation: "Trước khi bước sang tuổi 14, Mozart đã sáng tác một vài bản nhạc ngắn cho đàn piano.",
+                    optionsDict: [
+                        "A. has composed (Hiện tại hoàn thành)",
+                        "B. had composed (Quá khứ hoàn thành - xảy ra trước mốc 'turned 14')",
+                        "C. was composed (Bị động quá khứ đơn)",
+                        "D. would composed (Sai ngữ pháp)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì theo cấu trúc: `Before + S + V(quá khứ đơn), S + V(quá khứ hoàn thành)`. Hành động sáng tác xảy ra trước mốc thời gian quá khứ.",
+                    whyIncorrect: "A sai mốc thời gian; C là dạng bị động; D sai ngữ pháp động từ khuyết thiếu."
+                }
+            },
+            // III.4
+            {
+                type: "SECTION III - PAST PERFECT CONTINUOUS",
+                question: "4. ________ hard all year, so I felt that I deserved a holiday.",
+                options: [
+                    { text: "I work", correct: false },
+                    { text: "I worked", correct: false },
+                    { text: "I'd been working", correct: true },
+                    { text: "I've worked", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi đã làm việc chăm chỉ suốt cả năm, vì vậy tôi cảm thấy mình xứng đáng có một kỳ nghỉ.",
+                    optionsDict: [
+                        "A. I work (Hiện tại đơn)",
+                        "B. I worked (Quá khứ đơn)",
+                        "C. I'd been working (Quá khứ hoàn thành tiếp diễn - I had been working)",
+                        "D. I've worked (Hiện tại hoàn thành)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì vế sau 'felt' ở quá khứ. Việc làm việc chăm chỉ diễn ra liên tục kéo dài suốt cả năm trước đó dẫn đến cảm giác ở quá khứ -> Thì Quá khứ hoàn thành tiếp diễn.",
+                    whyIncorrect: "A, D dùng thì hiện tại không khớp vế 'felt'; B không thể hiện tính liên tục kéo dài suốt năm."
+                }
+            },
+            // III.5
+            {
+                type: "SECTION III - COLLOCATIONS (MAKE A FUSS)",
+                question: "5. She made a big ________ about not having a window seat on the plane.",
+                options: [
+                    { text: "complaint", correct: false },
+                    { text: "fuss", correct: true },
+                    { text: "excitement", correct: false },
+                    { text: "interest", correct: false }
+                ],
+                explanation: {
+                    translation: "Cô ấy đã làm ầm ĩ lên vì không có chỗ ngồi cạnh cửa sổ trên máy bay.",
+                    optionsDict: [
+                        "A. complaint (n: lời phàn nàn - đi với 'make a complaint')",
+                        "B. fuss (n: sự ầm ĩ - cụm 'make a fuss about')",
+                        "C. excitement (n: sự hào hứng)",
+                        "D. interest (n: sự quan tâm)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì cấu trúc cố định (Collocation): `make a fuss about something` (làm cằn nhằn / ầm ĩ lên về việc gì).",
+                    whyIncorrect: "A đi với 'make a complaint about' nhưng không hợp tự nhiên bằng 'make a big fuss'; C và D ngược nghĩa."
+                }
+            },
+            // III.6
+            {
+                type: "SECTION III - WORD FORMATION (PERSONALITY)",
+                question: "6. He has a very outgoing ________ and makes friends very easily.",
+                options: [
+                    { text: "person", correct: false },
+                    { text: "personal", correct: false },
+                    { text: "personality", correct: true },
+                    { text: "personage", correct: false }
+                ],
+                explanation: {
+                    translation: "Anh ấy có tính cách rất hòa đồng và kết bạn rất dễ dàng.",
+                    optionsDict: [
+                        "A. person (n: người)",
+                        "B. personal (adj: cá nhân)",
+                        "C. personality (n: tính cách, tính tình)",
+                        "D. personage (n: nhân vật quan trọng)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì đứng sau tính từ 'outgoing' cần danh từ chỉ đặc điểm tính cách 'personality' (outgoing personality = tính cách hướng ngoại/cởi mở).",
+                    whyIncorrect: "A, B, D không ghép với 'outgoing' chỉ tính nết con người."
+                }
+            },
+            // III.7
+            {
+                type: "SECTION III - VOCABULARY (IDOLS)",
+                question: "7. Teenagers often have their ________ who they admire very much.",
+                options: [
+                    { text: "ideals", correct: false },
+                    { text: "admirers", correct: false },
+                    { text: "images", correct: false },
+                    { text: "idols", correct: true }
+                ],
+                explanation: {
+                    translation: "Thanh thiếu niên thường có những thần tượng mà họ rất ngưỡng mộ.",
+                    optionsDict: [
+                        "A. ideals (n: lý tưởng)",
+                        "B. admirers (n: người hâm mộ)",
+                        "C. images (n: hình ảnh)",
+                        "D. idols (n: thần tượng)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì 'idols' (thần tượng) là người mà các bạn trẻ thần tượng và ngưỡng mộ ('admire').",
+                    whyIncorrect: "A, B, C không đúng ngữ nghĩa đối tượng được ngưỡng mộ."
+                }
+            },
+            // III.8
+            {
+                type: "SECTION III - PASSIVE VOICE (PRESENT CONTINUOUS)",
+                question: "8. While the front door ________, please use the side entrance.",
+                options: [
+                    { text: "repairs", correct: false },
+                    { text: "is repairing", correct: false },
+                    { text: "is repaired", correct: false },
+                    { text: "is being repaired", correct: true }
+                ],
+                explanation: {
+                    translation: "Trong khi cửa trước đang được sửa chữa, vui lòng sử dụng lối đi bên hông.",
+                    optionsDict: [
+                        "A. repairs (Chủ động hiện tại)",
+                        "B. is repairing (Chủ động tiếp diễn)",
+                        "C. is repaired (Bị động hiện tại đơn)",
+                        "D. is being repaired (Bị động hiện tại tiếp diễn)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì cửa trước ('front door') không thể tự sửa mà phải 'đang được sửa' -> Dạng Bị động của Thì Hiện tại tiếp diễn `is being + V3/V-ed`.",
+                    whyIncorrect: "A và B sai nghĩa chủ động; C không thể hiện quá trình đang diễn ra."
+                }
+            },
+            // III.9
+            {
+                type: "SECTION III - PAST SIMPLE TENSE",
+                question: "9. Clark ________ in a bank for 15 years. Then he gave it up.",
+                options: [
+                    { text: "works", correct: false },
+                    { text: "worked", correct: true },
+                    { text: "was working", correct: false },
+                    { text: "has worked", correct: false }
+                ],
+                explanation: {
+                    translation: "Clark đã làm việc ở ngân hàng trong 15 năm. Sau đó anh ấy đã nghỉ việc.",
+                    optionsDict: [
+                        "A. works (Hiện tại đơn)",
+                        "B. worked (Quá khứ đơn - việc đã chấm dứt hoàn toàn)",
+                        "C. was working (Quá khứ tiếp diễn)",
+                        "D. has worked (Hiện tại hoàn thành)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì vế sau khẳng định 'Then he gave it up' (Sau đó anh ấy nghỉ việc) chứng tỏ hành động làm việc ở ngân hàng đã kết thúc hoàn toàn trong quá khứ -> Dùng Thì Quá khứ đơn.",
+                    whyIncorrect: "A và D dùng thì hiện tại; C không diễn tả một khoảng thời gian hoàn tất trong quá khứ."
+                }
+            },
+            // III.10
+            {
+                type: "SECTION III - PASSIVE VOICE (PRESENT SIMPLE)",
+                question: "10. Jeans ________ of a heavy cotton cloth called denim.",
+                options: [
+                    { text: "make", correct: false },
+                    { text: "have made", correct: false },
+                    { text: "are making", correct: false },
+                    { text: "are made", correct: true }
+                ],
+                explanation: {
+                    translation: "Quần jeans được làm từ một loại vải bông dày gọi là vải denim.",
+                    optionsDict: [
+                        "A. make (Chủ động)",
+                        "B. have made (Hiện tại hoàn thành)",
+                        "C. are making (Hiện tại tiếp diễn)",
+                        "D. are made (Bị động hiện tại đơn - be made of)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì chủ ngữ 'Jeans' (quần jeans) chịu tác động, dùng cấu trúc bị động `are made of` (được làm bằng chất liệu gì).",
+                    whyIncorrect: "A, B, C ở dạng chủ động."
+                }
+            },
+            // III.11
+            {
+                type: "SECTION III - PRESENT PERFECT TENSE",
+                question: "11. We live in London. We ________ there for seven years.",
+                options: [
+                    { text: "live", correct: false },
+                    { text: "are living", correct: false },
+                    { text: "lived", correct: false },
+                    { text: "have lived", correct: true }
+                ],
+                explanation: {
+                    translation: "Chúng tôi sống ở Luân Đôn. Chúng tôi đã sống ở đó được 7 năm rồi.",
+                    optionsDict: [
+                        "A. live (Hiện tại đơn)",
+                        "B. are living (Hiện tại tiếp diễn)",
+                        "C. lived (Quá khứ đơn)",
+                        "D. have lived (Hiện tại hoàn thành)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì vế đầu 'We live in London' xác nhận hiện tại vẫn đang sống ở đó, đi với khoảng thời gian 'for seven years' chỉ hành động kéo dài từ quá khứ đến hiện tại -> Thì Hiện tại hoàn thành.",
+                    whyIncorrect: "C sai vì quá khứ đơn hàm ý hiện tại không còn sống ở đó nữa."
+                }
+            },
+            // III.12
+            {
+                type: "SECTION III - PARALLEL STRUCTURE",
+                question: "12. We started by cleaning up and ________ the small garden with a streamer and many balloons.",
+                options: [
+                    { text: "decorating", correct: true },
+                    { text: "to decorate", correct: false },
+                    { text: "decorates", correct: false },
+                    { text: "decorated", correct: false }
+                ],
+                explanation: {
+                    translation: "Chúng tôi bắt đầu bằng việc dọn dẹp và trang trí khu vườn nhỏ bằng dây cờ và nhiều bóng bay.",
+                    optionsDict: [
+                        "A. decorating (V-ing song hành với cleaning)",
+                        "B. to decorate (to-V)",
+                        "C. decorates (V-es)",
+                        "D. decorated (V-ed)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì cấu trúc song hành nối bằng từ 'and': đứng trước là `cleaning` (sau giới từ 'by') thì đứng sau cũng phải là `decorating` (`by cleaning up and decorating...`).",
+                    whyIncorrect: "B, C, D vi phạm cấu trúc song hành dạng V-ing."
+                }
+            },
+            // III.13
+            {
+                type: "SECTION III - PAST TIME CLAUSES",
+                question: "13. After she ________ hospital, she had a long holiday.",
+                options: [
+                    { text: "leaves", correct: false },
+                    { text: "is leaving", correct: false },
+                    { text: "left", correct: true },
+                    { text: "has left", correct: false }
+                ],
+                explanation: {
+                    translation: "Sau khi xuất viện, cô ấy đã có một kỳ nghỉ dài.",
+                    optionsDict: [
+                        "A. leaves (Hiện tại đơn)",
+                        "B. is leaving (Hiện tại tiếp diễn)",
+                        "C. left (Quá khứ đơn)",
+                        "D. has left (Hiện tại hoàn thành)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì vế chính chia ở Thì Quá khứ đơn 'had a long holiday', mệnh đề chỉ thời gian với 'After' xảy ra trong quá khứ chia ở Thì Quá khứ đơn (`left`).",
+                    whyIncorrect: "A, B, D dùng thì hiện tại mâu thuẫn mốc quá khứ."
+                }
+            },
+            // III.14
+            {
+                type: "SECTION III - VOCABULARY IN CONTEXT",
+                question: "14. I lost my passport. I need to go to the ________ to report it lost.",
+                options: [
+                    { text: "pharmacy", correct: false },
+                    { text: "gallery", correct: false },
+                    { text: "embassy", correct: true },
+                    { text: "monument", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi bị mất hộ chiếu. Tôi cần phải đến đại sứ quán để trình báo việc bị mất.",
+                    optionsDict: [
+                        "A. pharmacy (n: hiệu thuốc)",
+                        "B. gallery (n: phòng trưng bày nghệ thuật)",
+                        "C. embassy (n: đại sứ quán)",
+                        "D. monument (n: đài tưởng niệm)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì khi bị mất hộ chiếu (passport) ở nước ngoài, cơ quan chức năng giải quyết là Đại sứ quán ('embassy').",
+                    whyIncorrect: "A, B, D không phải là cơ quan cấp/trình báo hộ chiếu."
+                }
+            },
+            // III.15
+            {
+                type: "SECTION III - PRESENT PERFECT TENSE",
+                question: "15. I ________ the new Harry Potter book now, so you can borrow my copy if you like.",
+                options: [
+                    { text: "finish", correct: false },
+                    { text: "am finishing", correct: false },
+                    { text: "have finished", correct: true },
+                    { text: "had finished", correct: false }
+                ],
+                explanation: {
+                    translation: "Bây giờ tôi đã đọc xong cuốn sách Harry Potter mới rồi, nên bạn có thể mượn cuốn của tôi nếu thích.",
+                    optionsDict: [
+                        "A. finish (Hiện tại đơn)",
+                        "B. am finishing (Hiện tại tiếp diễn)",
+                        "C. have finished (Hiện tại hoàn thành - vừa mới đọc xong)",
+                        "D. had finished (Quá khứ hoàn thành)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì vế sau 'you can borrow my copy' cho thấy việc đọc đã vừa hoàn thành để lại kết quả ở hiện tại cho mượn -> Dùng Thì Hiện tại hoàn thành.",
+                    whyIncorrect: "B có nghĩa là đang đọc chưa xong nên chưa thể cho mượn được; D sai mốc thời gian quá khứ."
+                }
+            },
+
+            // IV.1
+            {
+                type: "SECTION IV - FOR vs SINCE",
+                question: "16. I haven't seen Mark ________ Christmas.",
+                options: [
+                    { text: "for", correct: false },
+                    { text: "since", correct: true },
+                    { text: "ever", correct: false },
+                    { text: "never", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi đã không gặp Mark kể từ Giáng sinh.",
+                    optionsDict: [
+                        "A. for (Đi với khoảng thời gian)",
+                        "B. since (Đi với mốc thời gian 'Christmas')",
+                        "C. ever (Đã từng)",
+                        "D. never (Chưa bao giờ)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì 'Christmas' là mốc thời gian cụ thể trong quá khứ, đi với Thì Hiện tại hoàn thành phủ định ta dùng 'since'.",
+                    whyIncorrect: "A đi với khoảng thời gian (for 2 days); C và D không phải từ chỉ mốc thời gian."
+                }
+            },
+            // IV.2
+            {
+                type: "SECTION IV - FOR & NEVER",
+                question: "17. Peter has been in Viet Nam ________ a long time, but he's ________ visited the Temple of Literature.",
+                options: [
+                    { text: "since / never", correct: false },
+                    { text: "for / never", correct: true },
+                    { text: "for / ever", correct: false },
+                    { text: "since / ever", correct: false }
+                ],
+                explanation: {
+                    translation: "Peter đã ở Việt Nam được một khoảng thời gian dài, nhưng anh ấy chưa bao giờ thăm Văn Miếu.",
+                    optionsDict: [
+                        "A. since / never",
+                        "B. for / never (for + khoảng thời gian 'a long time', never = chưa bao giờ)",
+                        "C. for / ever",
+                        "D. since / ever"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì 'a long time' là khoảng thời gian đi với 'for'. Từ nối 'but' biểu thị sự tương phản nên vế sau mang nghĩa tiêu cực 'chưa bao giờ' -> 'never'.",
+                    whyIncorrect: "A sai giới từ; C dùng 'ever' không hợp vế tương phản."
+                }
+            },
+            // IV.3
+            {
+                type: "SECTION IV - FOR & SINCE",
+                question: "18. She has worked for this company ________ many years, ________ 1976; I guess.",
+                options: [
+                    { text: "for / since", correct: true },
+                    { text: "since / for", correct: false },
+                    { text: "for / for", correct: false },
+                    { text: "since / since", correct: false }
+                ],
+                explanation: {
+                    translation: "Cô ấy đã làm việc cho công ty này nhiều năm rồi, từ năm 1976; tôi đoán vậy.",
+                    optionsDict: [
+                        "A. for / since (for + many years, since + 1976)",
+                        "B. since / for",
+                        "C. for / for",
+                        "D. since / since"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì 'many years' là khoảng thời gian -> dùng `for`; '1976' là mốc năm cố định -> dùng `since`.",
+                    whyIncorrect: "B, C, D dùng sai cặp giới từ chỉ thời gian."
+                }
+            },
+            // IV.4
+            {
+                type: "SECTION IV - SINCE & NEVER",
+                question: "19. We've been friends ________ we were children, and I've ________ liked anyone as much as I like him.",
+                options: [
+                    { text: "for / never", correct: false },
+                    { text: "since / ever", correct: false },
+                    { text: "since / never", correct: true },
+                    { text: "for / ever", correct: false }
+                ],
+                explanation: {
+                    translation: "Chúng tôi đã là bạn kể từ khi còn là những đứa trẻ, và tôi chưa bao giờ thích ai nhiều như thích anh ấy.",
+                    optionsDict: [
+                        "A. for / never",
+                        "B. since / ever",
+                        "C. since / never (since + mệnh đề quá khứ, never = chưa bao giờ)",
+                        "D. for / ever"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì đứng trước mệnh đề quá khứ 'we were children' cần 'since'. Vế sau diễn tả trải nghiệm chưa từng có ai bằng anh ấy -> dùng 'never'.",
+                    whyIncorrect: "A sai giới từ trước mệnh đề; B sai từ chỉ trải nghiệm."
+                }
+            },
+            // IV.5
+            {
+                type: "SECTION IV - FOR & NEVER",
+                question: "20. I've known him ________ over ten years, but I've ________ met his parents.",
+                options: [
+                    { text: "for / never", correct: true },
+                    { text: "since / never", correct: false },
+                    { text: "for / ever", correct: false },
+                    { text: "since / ever", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi đã biết anh ấy hơn 10 năm rồi, nhưng tôi chưa bao giờ gặp cha mẹ anh ấy.",
+                    optionsDict: [
+                        "A. for / never (for + khoảng thời gian 'over ten years')",
+                        "B. since / never",
+                        "C. for / ever",
+                        "D. since / ever"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì 'over ten years' là khoảng thời gian dùng 'for'. 'but' thể hiện ý tương phản chưa từng gặp cha mẹ anh ấy -> dùng 'never'.",
+                    whyIncorrect: "B sai giới từ; C dùng 'ever' sai nét nghĩa."
+                }
+            },
+
+            // V.1
+            {
+                type: "SECTION V - PAST SIMPLE TENSE",
+                question: "21. I ________ at Ly Thai To school from 2010 to 2013.",
+                options: [
+                    { text: "study", correct: false },
+                    { text: "studied", correct: true },
+                    { text: "have studied", correct: false },
+                    { text: "was studying", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi đã học tại trường Lý Thái Tổ từ năm 2010 đến năm 2013.",
+                    optionsDict: [
+                        "A. study (Hiện tại đơn)",
+                        "B. studied (Quá khứ đơn - khoảng thời gian đã kết thúc hẳn)",
+                        "C. have studied (Hiện tại hoàn thành)",
+                        "D. was studying (Quá khứ tiếp diễn)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì mốc thời gian 'from 2010 to 2013' đã kết thúc hoàn toàn trong quá khứ -> Dùng Thì Quá khứ đơn (`studied`).",
+                    whyIncorrect: "A, C, D sai thì ngữ pháp."
+                }
+            },
+            // V.2
+            {
+                type: "SECTION V - PRESENT PERFECT & PAST SIMPLE",
+                question: "22. They last ________ Jack for a long time. It's twenty years since they last ________ him.",
+                options: [
+                    { text: "didn't see / saw", correct: false },
+                    { text: "haven't seen / saw", correct: true },
+                    { text: "haven't seen / see", correct: false },
+                    { text: "didn't see / see", correct: false }
+                ],
+                explanation: {
+                    translation: "Đã lâu rồi họ không gặp Jack. Đã 20 năm kể từ lần cuối họ nhìn thấy anh ấy.",
+                    optionsDict: [
+                        "A. didn't see / saw",
+                        "B. haven't seen / saw (Mẫu cấu trúc: It's + time + since + S + last + V2)",
+                        "C. haven't seen / see",
+                        "D. didn't see / see"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì vế 1 diễn tả sự việc lâu chưa làm tính đến nay -> Thì Hiện tại hoàn thành phủ định. Vế 2 theo công thức: `It's [time] since + S + last + V2/V-ed` -> `saw`.",
+                    whyIncorrect: "A, C, D vi phạm cấu trúc đi sau 'since'."
+                }
+            },
+            // V.4
+            {
+                type: "SECTION V - PAST CONTINUOUS TENSE",
+                question: "23. The children ________ happily in the park when I found them.",
+                options: [
+                    { text: "played", correct: false },
+                    { text: "were playing", correct: true },
+                    { text: "are playing", correct: false },
+                    { text: "have played", correct: false }
+                ],
+                explanation: {
+                    translation: "Bọn trẻ đang chơi vui vẻ ở công viên khi tôi tìm thấy chúng.",
+                    optionsDict: [
+                        "A. played (Quá khứ đơn)",
+                        "B. were playing (Quá khứ tiếp diễn - hành động đang diễn ra)",
+                        "C. are playing (Hiện tại tiếp diễn)",
+                        "D. have played (Hiện tại hoàn thành)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì hành động bọn trẻ đang chơi trong công viên thì hành động tôi tìm thấy ('found') cắt ngang -> Dùng Thì Quá khứ tiếp diễn (`were playing`).",
+                    whyIncorrect: "A, C, D không đúng mối quan hệ hành động đang diễn ra bị cắt ngang."
+                }
+            },
+            // V.5
+            {
+                type: "SECTION V - TENSE MIX (PRESENT PERFECT & PAST SIMPLE)",
+                question: "24. ________ home yet? - Yes. He ________ three hours ago.",
+                options: [
+                    { text: "Has Peter arrived / arrived", correct: true },
+                    { text: "Did Peter arrive / arrived", correct: false },
+                    { text: "Has Peter arrived / has arrived", correct: false },
+                    { text: "Did Peter arrive / has arrived", correct: false }
+                ],
+                explanation: {
+                    translation: "- Peter đã về nhà chưa? - Rồi. Anh ấy đã về cách đây 3 tiếng.",
+                    optionsDict: [
+                        "A. Has Peter arrived / arrived (Câu hỏi với yet -> HTHT; Vế trả lời có 'ago' -> QKĐ)",
+                        "B. Did Peter arrive / arrived",
+                        "C. Has Peter arrived / has arrived",
+                        "D. Did Peter arrive / has arrived"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì câu hỏi chứa 'yet' bắt buộc dùng Hiện tại hoàn thành (`Has Peter arrived...`). Câu trả lời chứa 'three hours ago' bắt buộc dùng Quá khứ đơn (`arrived`).",
+                    whyIncorrect: "B, C, D dùng sai thì ngữ pháp đi với 'yet' và 'ago'."
+                }
+            },
+            // V.9
+            {
+                type: "SECTION V - PAST SIMPLE SEQUENCE",
+                question: "25. As soon as Martina saw the fire, she ________ the fire department.",
+                options: [
+                    { text: "phones", correct: false },
+                    { text: "phoned", correct: true },
+                    { text: "has phoned", correct: false },
+                    { text: "was phoning", correct: false }
+                ],
+                explanation: {
+                    translation: "Ngay khi Martina nhìn thấy đám cháy, cô ấy đã gọi điện cho sở chữa cháy.",
+                    optionsDict: [
+                        "A. phones (Hiện tại đơn)",
+                        "B. phoned (Quá khứ đơn)",
+                        "C. has phoned (Hiện tại hoàn thành)",
+                        "D. was phoning (Quá khứ tiếp diễn)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì chuỗi hành động xảy ra nối tiếp nhau ngay lập tức trong quá khứ đi với 'As soon as' đều chia ở Thì Quá khứ đơn (`phoned`).",
+                    whyIncorrect: "A, C, D không đúng chuỗi hành động quá khứ."
+                }
+            },
+
+            // VI.1
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "26. The trip left me with very impressive and ________ memories. (forget)",
+                options: [
+                    { text: "forgettable", correct: false },
+                    { text: "unforgetting", correct: false },
+                    { text: "unforgettable", correct: true },
+                    { text: "forgetful", correct: false }
+                ],
+                explanation: {
+                    translation: "Chuyến đi đã để lại trong tôi những kỷ niệm rất ấn tượng và không thể nào quên.",
+                    optionsDict: [
+                        "A. forgettable (adj: dễ quên)",
+                        "B. unforgetting (Sai từ dạng)",
+                        "C. unforgettable (adj: không thể nào quên)",
+                        "D. forgetful (adj: hay quên)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì tính từ 'unforgettable' (không thể quên) đứng song hành với 'impressive' bổ nghĩa cho 'memories'.",
+                    whyIncorrect: "A ngược nghĩa; B sai hình thái từ; D miêu tả tính tình con người hay quên."
+                }
+            },
+            // VI.2
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "27. The scenery here makes me feel ________ and gentle. (peace)",
+                options: [
+                    { text: "peaceful", correct: true },
+                    { text: "peacefully", correct: false },
+                    { text: "peaceable", correct: false },
+                    { text: "unpeaceful", correct: false }
+                ],
+                explanation: {
+                    translation: "Phong cảnh nơi đây làm cho tôi cảm thấy bình yên và nhẹ nhàng.",
+                    optionsDict: [
+                        "A. peaceful (adj: thanh bình, yên bình)",
+                        "B. peacefully (adv)",
+                        "C. peaceable (adj: hòa bình)",
+                        "D. unpeaceful (adj: không yên bình)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì đứng sau động từ chỉ cảm giác 'feel' và song hành với tính từ 'gentle' cần tính từ `peaceful`.",
+                    whyIncorrect: "B là trạng từ; C và D không hợp ngữ cảnh miêu tả cảnh đẹp."
+                }
+            },
+            // VI.3
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "28. We saw some sea turtles. It was an ________ experience. (incredibly)",
+                options: [
+                    { text: "incredible", correct: true },
+                    { text: "incredibly", correct: false },
+                    { text: "incredibility", correct: false },
+                    { text: "incredulous", correct: false }
+                ],
+                explanation: {
+                    translation: "Chúng tôi đã nhìn thấy vài con rùa biển. Đó là một trải nghiệm đáng kinh ngạc.",
+                    optionsDict: [
+                        "A. incredible (adj: đáng kinh ngạc, tuyệt vời)",
+                        "B. incredibly (adv: một cách kinh ngạc)",
+                        "C. incredibility (n)",
+                        "D. incredulous (adj: hoài nghi)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì đứng trước danh từ 'experience' cần một Tính từ `incredible`.",
+                    whyIncorrect: "B là trạng từ đề bài cho; C là danh từ; D mang nghĩa nghi ngờ."
+                }
+            },
+            // VI.4
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "29. One ________ that captivated me three years ago and still does is the collection of small offshore islands. (attract)",
+                options: [
+                    { text: "attractive", correct: false },
+                    { text: "attraction", correct: true },
+                    { text: "attractiveness", correct: false },
+                    { text: "attractively", correct: false }
+                ],
+                explanation: {
+                    translation: "Một điểm thu hút/địa điểm du lịch làm tôi say đắm từ 3 năm trước và tới giờ vẫn vậy là tập hợp các hòn đảo nhỏ ngoài khơi.",
+                    optionsDict: [
+                        "A. attractive (adj: hấp dẫn)",
+                        "B. attraction (n: điểm thu hút / địa điểm du lịch)",
+                        "C. attractiveness (n: sự quyến rũ)",
+                        "D. attractively (adv)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì đứng sau 'One' làm chủ ngữ trong câu cần một Danh từ đếm được `attraction` (điểm thu hút du lịch).",
+                    whyIncorrect: "A và D sai từ loại; C là danh từ trừu tượng không chỉ danh thắng."
+                }
+            },
+            // VI.10
+            {
+                type: "SECTION VI - WORD FORMATION",
+                question: "30. The beauty of the countryside is beyond our ________. (imagine)",
+                options: [
+                    { text: "imaginative", correct: false },
+                    { text: "imaginary", correct: false },
+                    { text: "imagination", correct: true },
+                    { text: "imagine", correct: false }
+                ],
+                explanation: {
+                    translation: "Vẻ đẹp của vùng quê vượt ngoài sức tưởng tượng của chúng tôi.",
+                    optionsDict: [
+                        "A. imaginative (adj: giàu tưởng tượng)",
+                        "B. imaginary (adj: hư cấu)",
+                        "C. imagination (n: trí tưởng tượng - cụm 'beyond imagination')",
+                        "D. imagine (v)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì thành ngữ 'beyond one's imagination' nghĩa là vượt ngoài sức tưởng tượng của ai đó.",
+                    whyIncorrect: "A, B, D sai từ loại đi sau giới từ 'beyond' và tính từ sở hữu 'our'."
+                }
+            },
+
+            // VII.1
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "31. Choose the underlined word/phrase that needs correcting:<br>Have you <u>forgotten</u>(B) <u>to lock</u>(C) the back door <u>frequently</u>(D)?",
+                options: [
+                    { text: "Have", correct: false },
+                    { text: "forgotten", correct: false },
+                    { text: "to lock", correct: false },
+                    { text: "frequently", correct: true }
+                ],
+                explanation: {
+                    translation: "Bạn đã quên khóa cửa sau à?",
+                    optionsDict: [
+                        "A. Have (Đúng)",
+                        "B. forgotten (Đúng)",
+                        "C. to lock (Đúng)",
+                        "D. frequently -> Thừa/sai từ trạng ngữ tần suất trong câu hỏi trải nghiệm vừa mới xảy ra"
+                    ],
+                    whyCorrect: "Đáp án D sai vì câu hỏi Thì Hiện tại hoàn thành hỏi việc quên khóa cửa không đi với trạng từ tần suất 'frequently' ở cuối câu.",
+                    whyIncorrect: "A, B, C đúng cấu trúc hiện tại hoàn thành."
+                }
+            },
+            // VII.2
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "32. Choose the underlined word/phrase that needs correcting:<br><u>As soon as</u>(A) the alarm clock <u>had gone off</u>(B), she <u>woke up</u>(C) and <u>got out of</u>(D) bed.",
+                options: [
+                    { text: "As soon as", correct: false },
+                    { text: "had gone off", correct: true },
+                    { text: "woke up", correct: false },
+                    { text: "got out of", correct: false }
+                ],
+                explanation: {
+                    translation: "Ngay khi chuông báo thức reo, cô ấy thức dậy và ra khỏi giường.",
+                    optionsDict: [
+                        "A. As soon as (Đúng)",
+                        "B. had gone off -> Sửa thành 'went off' (Chuỗi hành động liên tiếp quá khứ đơn)",
+                        "C. woke up (Đúng)",
+                        "D. got out of (Đúng)"
+                    ],
+                    whyCorrect: "Đáp án B sai vì liên từ 'As soon as' nối chuỗi các hành động xảy ra nối tiếp nhau lập tức trong quá khứ đều chia ở Thì Quá khứ đơn (`went off`).",
+                    whyIncorrect: "A, C, D đều chia đúng quá khứ đơn."
+                }
+            },
+            // VII.3
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "33. Choose the underlined word/phrase that needs correcting:<br>Frank <u>is usually swimming</u>(A) before <u>work</u>(B), <u>but</u>(C) this morning he <u>is jogging</u>(D).",
+                options: [
+                    { text: "is usually swimming", correct: true },
+                    { text: "work", correct: false },
+                    { text: "but", correct: false },
+                    { text: "is jogging", correct: false }
+                ],
+                explanation: {
+                    translation: "Frank thường đi bơi trước giờ làm việc, nhưng sáng nay anh ấy đang đi bộ thể dục.",
+                    optionsDict: [
+                        "A. is usually swimming -> Sửa thành 'usually swims' (Trạng từ usually chỉ thói quen dùng Hiện tại đơn)",
+                        "B. work (Đúng)",
+                        "C. but (Đúng)",
+                        "D. is jogging (Đúng)"
+                    ],
+                    whyCorrect: "Đáp án A sai vì trạng từ chỉ tần suất 'usually' đi với thói quen hàng ngày phải chia ở Thì Hiện tại đơn (`usually swims`).",
+                    whyIncorrect: "B, C, D dùng đúng ngữ pháp."
+                }
+            },
+            // VII.4
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "34. Choose the underlined word/phrase that needs correcting:<br>I like <u>lying</u>(A) on <u>the beach</u>(B), so I <u>always</u>(C) spend my holidays <u>to sunbath</u>(D).",
+                options: [
+                    { text: "lying", correct: false },
+                    { text: "the beach", correct: false },
+                    { text: "always", correct: false },
+                    { text: "to sunbath", correct: true }
+                ],
+                explanation: {
+                    translation: "Tôi thích nằm trên bờ biển, vì vậy tôi luôn dành kỳ nghỉ của mình để tắm nắng.",
+                    optionsDict: [
+                        "A. lying (Đúng)",
+                        "B. the beach (Đúng)",
+                        "C. always (Đúng)",
+                        "D. to sunbath -> Sửa thành 'sunbathing' (Cấu trúc spend time + V-ing)"
+                    ],
+                    whyCorrect: "Đáp án D sai vì theo cấu trúc chuẩn: `spend time/holidays + V-ing`. Do đó cần sửa `to sunbath` thành `sunbathing`.",
+                    whyIncorrect: "A, B, C đúng ngữ pháp."
+                }
+            },
+            // VII.5
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "35. Choose the underlined word/phrase that needs correcting:<br><u>Since</u>(A) I <u>begin</u>(B) school, I <u>haven't had</u>(C) <u>much</u>(D) spare time.",
+                options: [
+                    { text: "Since", correct: false },
+                    { text: "begin", correct: true },
+                    { text: "haven't had", correct: false },
+                    { text: "much", correct: false }
+                ],
+                explanation: {
+                    translation: "Kể từ khi tôi đi học, tôi không có nhiều thời gian rảnh rỗi.",
+                    optionsDict: [
+                        "A. Since (Đúng)",
+                        "B. begin -> Sửa thành 'began' (Mệnh đề đi sau Since chia quá khứ đơn)",
+                        "C. haven't had (Đúng)",
+                        "D. much (Đúng)"
+                    ],
+                    whyCorrect: "Đáp án B sai vì mệnh đề đi trực tiếp sau liên từ 'Since' đóng vai trò mốc thời gian quá khứ bắt buộc chia Thì Quá khứ đơn (`began`).",
+                    whyIncorrect: "A, C, D chính xác."
+                }
+            },
+            // VII.6
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "36. Choose the underlined word/phrase that needs correcting:<br>My family <u>lived</u>(A) in Hue <u>since</u>(B) 1990 to 1996, but we <u>are now living</u>(C) <u>in</u>(D) Hanoi.",
+                options: [
+                    { text: "lived", correct: false },
+                    { text: "since", correct: true },
+                    { text: "are now living", correct: false },
+                    { text: "in", correct: false }
+                ],
+                explanation: {
+                    translation: "Gia đình tôi đã sống ở Huế từ năm 1990 đến năm 1996, nhưng hiện tại chúng tôi đang sống ở Hà Nội.",
+                    optionsDict: [
+                        "A. lived (Đúng)",
+                        "B. since -> Sửa thành 'from' (Cấu trúc khoảng thời gian từ năm... đến năm... 'from... to...')",
+                        "C. are now living (Đúng)",
+                        "D. in (Đúng)"
+                    ],
+                    whyCorrect: "Đáp án B sai vì cấu trúc mốc thời gian cố định đi với 'to 1996' phải là cặp `from... to...` (`from 1990 to 1996`). 'Since' không đi với 'to'.",
+                    whyIncorrect: "A, C, D sử dụng đúng."
+                }
+            },
+            // VII.7
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "37. Choose the underlined word/phrase that needs correcting:<br><u>There are</u>(A) a few areas <u>of human</u>(B) experience that I <u>have not been</u>(C) <u>written</u>(D) about.",
+                options: [
+                    { text: "There are", correct: false },
+                    { text: "of human", correct: false },
+                    { text: "have not been", correct: true },
+                    { text: "written", correct: false }
+                ],
+                explanation: {
+                    translation: "Có một vài lĩnh vực thuộc về trải nghiệm con người mà tôi chưa từng viết về chúng.",
+                    optionsDict: [
+                        "A. There are (Đúng)",
+                        "B. of human (Đúng)",
+                        "C. have not been -> Sửa thành 'have not' (Chủ ngữ 'I' thực hiện hành động viết - thể chủ động)",
+                        "D. written (Đúng)"
+                    ],
+                    whyCorrect: "Đáp án C sai vì chủ ngữ 'I' thực hiện hành động viết về đề tài, câu ở Thể Chủ động `I have not written about`, không dùng dạng bị động 'been written'.",
+                    whyIncorrect: "A, B, D hợp lệ."
+                }
+            },
+            // VII.8
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "38. Choose the underlined word/phrase that needs correcting:<br><u>I think</u>(A) you <u>will enjoy</u>(B) the experience <u>by taking</u>(C) part <u>in the show</u>(D).",
+                options: [
+                    { text: "I think", correct: false },
+                    { text: "will enjoy", correct: false },
+                    { text: "by taking", correct: true },
+                    { text: "in the show", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi nghĩ bạn sẽ thích trải nghiệm tham gia vào chương trình.",
+                    optionsDict: [
+                        "A. I think (Đúng)",
+                        "B. will enjoy (Đúng)",
+                        "C. by taking -> Sửa thành 'of taking' (Cụm danh từ 'experience of doing something')",
+                        "D. in the show (Đúng)"
+                    ],
+                    whyCorrect: "Đáp án C sai vì danh từ 'experience' đi kèm với giới từ 'of' bổ nghĩa cho hoạt động: `experience of V-ing` (trải nghiệm làm việc gì).",
+                    whyIncorrect: "A, B, D dùng chuẩn ngữ pháp."
+                }
+            },
+            // VII.9
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "39. Choose the underlined word/phrase that needs correcting:<br><u>I find that</u>(A) necessary <u>to do</u>(B) something <u>about</u>(C) traffic problems <u>in our city</u>(D).",
+                options: [
+                    { text: "I find that", correct: true },
+                    { text: "to do", correct: false },
+                    { text: "about", correct: false },
+                    { text: "in our city", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi thấy cần thiết phải làm điều gì đó về các vấn đề giao thông ở thành phố chúng ta.",
+                    optionsDict: [
+                        "A. I find that -> Sửa thành 'I find it' (Cấu trúc tân ngữ giả find it + adj + to-V)",
+                        "B. to do (Đúng)",
+                        "C. about (Đúng)",
+                        "D. in our city (Đúng)"
+                    ],
+                    whyCorrect: "Đáp án A sai vì theo cấu trúc tân ngữ giả định chuẩn: `find + it + adj + to-V`. Cần thay `that` bằng tân ngữ giả `it` (`I find it necessary...`).",
+                    whyIncorrect: "B, C, D chuẩn xác."
+                }
+            },
+            // VII.10
+            {
+                type: "SECTION VII - ERROR CORRECTION",
+                question: "40. Choose the underlined word/phrase that needs correcting:<br><u>For</u>(A) the last <u>few months</u>(B), I <u>have spend</u>(C) every <u>Saturday</u>(D) in my flat.",
+                options: [
+                    { text: "For", correct: false },
+                    { text: "few months", correct: false },
+                    { text: "have spend", correct: true },
+                    { text: "Saturday", correct: false }
+                ],
+                explanation: {
+                    translation: "Mấy tháng qua, tôi đã dành mỗi Thứ Bảy ở trong căn hộ của mình.",
+                    optionsDict: [
+                        "A. For (Đúng)",
+                        "B. few months (Đúng)",
+                        "C. have spend -> Sửa thành 'have spent' (Động từ phân từ V3 của spend là spent)",
+                        "D. Saturday (Đúng)"
+                    ],
+                    whyCorrect: "Đáp án C sai vì động từ đi sau 'have' trong Thì Hiện tại hoàn thành phải ở dạng Quá khứ phân từ V3 (`have spent`), không dùng dạng nguyên mẫu 'spend'.",
+                    whyIncorrect: "A, B, D dùng chuẩn."
+                }
+            }
+        ];
+
+        let questions = [];
+
+        function shuffleArray(array) {
+            let cur = array.slice();
+            for (let i = cur.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cur[i], cur[j]] = [cur[j], cur[i]];
+            }
+            return cur;
+        }
+
+        function initQuiz() {
+            questions = rawQuestions.map(q => {
+                let shuffledOpts = shuffleArray(q.options);
+                return {
+                    ...q,
+                    shuffledOptions: shuffledOpts,
+                    userAnswerIndex: null
+                };
+            });
+            renderQuiz();
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+
+                const optionsHTML = q.shuffledOptions.map((opt, optIdx) => {
+                    const letters = ['A', 'B', 'C', 'D'];
+                    return `
+                        <button class="opt-btn" id="opt-${idx}-${optIdx}" onclick="selectAnswer(${idx}, ${optIdx})">
+                            <span class="opt-prefix">${letters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                }).join('');
+
+                const exp = q.explanation;
+                const expDictHTML = exp.optionsDict.map(item => `<li>${item}</li>`).join('');
+
+                card.innerHTML = `
+                    <div class="q-header">
+                        <span class="q-number">Câu ${idx + 1} / ${questions.length}</span>
+                        <span class="q-type">${q.type}</span>
+                    </div>
+                    <div class="q-text">${q.question}</div>
+                    <div class="options-grid">
+                        ${optionsHTML}
+                    </div>
+                    <div class="explanation-box" id="exp-${idx}">
+                        <div class="exp-head">💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG:</div>
+                        <div class="exp-section"><strong>1. Dịch câu hỏi:</strong> ${exp.translation}</div>
+                        <div class="exp-section">
+                            <strong>2. Phân tích 4 đáp án:</strong>
+                            <ul class="exp-list">${expDictHTML}</ul>
+                        </div>
+                        <div class="exp-section"><strong>3. Tại sao chọn đáp án này?</strong> ${exp.whyCorrect}</div>
+                        <div class="exp-section"><strong>4. Tại sao các đáp án khác sai?</strong> ${exp.whyIncorrect}</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function selectAnswer(qIdx, optIdx) {
+            const q = questions[qIdx];
+            if (q.userAnswerIndex !== null) return;
+
+            q.userAnswerIndex = optIdx;
+            const selectedOpt = q.shuffledOptions[optIdx];
+            const isCorrect = selectedOpt.correct;
+
+            const selectedBtn = document.getElementById(`opt-${qIdx}-${optIdx}`);
+
+            if (isCorrect) {
+                selectedBtn.classList.add('correct');
+                playSound('correct');
+                triggerConfetti();
+            } else {
+                selectedBtn.classList.add('wrong');
+                playSound('wrong');
+
+                q.shuffledOptions.forEach((o, i) => {
+                    if (o.correct) {
+                        document.getElementById(`opt-${qIdx}-${i}`).classList.add('correct');
+                    }
+                });
+            }
+
+            q.shuffledOptions.forEach((_, i) => {
+                const b = document.getElementById(`opt-${qIdx}-${i}`);
+                b.disabled = true;
+                b.style.cursor = 'default';
+            });
+
+            document.getElementById(`exp-${qIdx}`).classList.add('show');
+        }
+
+        function submitQuiz() {
+            let correctCount = 0;
+
+            questions.forEach(q => {
+                if (q.userAnswerIndex !== null && q.shuffledOptions[q.userAnswerIndex].correct) {
+                    correctCount++;
+                }
+            });
+
+            const total = questions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('score-text').innerText = `${correctCount} / ${total} (${percentage}%)`;
+
+            let comment = "";
+            if (percentage < 50) {
+                comment = "Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else if (percentage <= 80) {
+                comment = "Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else {
+                comment = "Làm tốt lắm, con cố gắng rinh điểm 10 ở lần sau nha!";
+                triggerConfetti();
+            }
+
+            document.getElementById('comment-text').innerText = comment;
+            document.getElementById('result-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').style.display = 'none';
+        }
+
+        function triggerConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#8854C0', '#FDCB6E', '#00C9A7', '#FF7675', '#6C5CE7', '#00D26A'];
+
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 14,
+                    vy: (Math.random() - 0.7) * 14,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    life: 90
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+
+                particles.forEach(p => {
+                    if (p.life > 0) {
+                        alive = true;
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vy += 0.4;
+                        p.life -= 2;
+                        ctx.fillStyle = p.color;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+
+                if (alive) requestAnimationFrame(animate);
+                else ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            animate();
+        }
+
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
